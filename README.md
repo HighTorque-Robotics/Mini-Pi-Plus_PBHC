@@ -1,8 +1,7 @@
-
-# Pi_Plus_PBHC: 跌到爬起README
   ![1730344376083](Video/logo.jpg)
+# Pi_Plus_PBHC: 跌到爬起README
 ![视频封面描述](https://github.com/HighTorque-Robotics/Pi-Plus_PBHC/raw/main/Video/ab60337d9e5ab015f1fa9f51d9106051.gif)
-下载项目：
+### 下载项目：
 ```
 git clone https://github.com/HighTorque-Robotics/Pi-Plus_PBHC
 ```
