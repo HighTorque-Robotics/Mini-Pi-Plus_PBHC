@@ -1,7 +1,0 @@
-# @package _global_
-
-defaults:
-  - /algo: base_algo
-  - /env: base_task
-
-experiment_name: TESTBaseExp

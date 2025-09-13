@@ -1,6 +1,0 @@
-# @package _global_
-
-defaults:
-  - /algo: mh_ppo
-
-experiment_name: TEST_Motion_Tracking_PI 

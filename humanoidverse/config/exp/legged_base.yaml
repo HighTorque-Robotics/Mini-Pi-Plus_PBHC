@@ -1,7 +1,0 @@
-# @package _global_
-
-defaults:
-  - /algo: ppo
-  - /env: legged_base
-
-experiment_name: TESTLeggedBase
