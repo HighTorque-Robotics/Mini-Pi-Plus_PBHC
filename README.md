@@ -3,7 +3,7 @@
 ## Pi_Mimic项目使用方法介绍
 下载项目：
 ```
-git clone -b Pi_workshop_Beijing --single-branch git@github.com:HighTorque-Locomotion/Pi_mimic_workshop.git
+git clone https://github.com/HighTorque-Robotics/Pi-Plus_PBHC
 ```
 ### 1. 环境安装：
 
