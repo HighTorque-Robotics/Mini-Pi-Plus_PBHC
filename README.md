@@ -1,19 +1,6 @@
 
-<video src="https://raw.githubusercontent.com/HighTorque-Robotics/Pi-Plus_PBHC/main/Video/ab60337d9e5ab015f1fa9f51d9106051.mp4" width="600" controls>
-  你的浏览器不支持视频播放，请检查浏览器设置或升级浏览器
-</video>
-<video src="https://raw.githubusercontent.com/HighTorque-Robotics/Pi-Plus_PBHC/main/Video/ab60337d9e5ab015f1fa9f51d9106051.mp4" width="600" controls>
-  你的浏览器不支持视频播放，请检查浏览器设置或升级浏览器
-</video>
+![视频封面描述](https://github.com/HighTorque-Robotics/Pi-Plus_PBHC/raw/main/Video/ab60337d9e5ab015f1fa9f51d9106051.mp4)
 
-<video src="https://raw.githubusercontent.com/HighTorque-Robotics/Pi-Plus_PBHC/main/Video/ff8db9ee331d3ab81dff9a01b29306c4.mp4" width="600" controls>
-  你的浏览器不支持视频播放，请检查浏览器设置或升级浏览器
-</video>
-
-
-<video src="https://raw.githubusercontent.com/HighTorque-Robotics/Pi-Plus_PBHC/main/Video/ff8db9ee331d3ab81dff9a01b29306c4.mp4" width="600" controls>
-  你的浏览器不支持视频播放，请检查浏览器设置或升级浏览器
-</video>
 
 ## Pi_Mimic项目使用方法介绍
 下载项目：
