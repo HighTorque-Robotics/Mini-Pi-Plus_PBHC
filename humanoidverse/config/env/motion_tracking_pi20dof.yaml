@@ -1,0 +1,117 @@
+# @package _global_
+
+defaults:
+  - legged_base
+
+# 环境结构配置
+env:
+  _target_: humanoidverse.envs.motion_tracking.motion_tracking_pi20dof.LeggedRobotMotionTracking
+  config:
+    use_vec_reward: True  # 使用向量化奖励
+    max_episode_length_s: 100000  # 最大回合长度（秒）
+    
+    # 终止条件配置
+    termination:
+      terminate_by_contact: False  # 不因接触而终止
+      terminate_by_gravity: True  # 因重力（倾倒）而终止
+      terminate_by_low_height: False  # 不因高度过低而终止
+      terminate_when_motion_end: True  # 动作结束时终止
+      terminate_when_motion_far: True  # 动作偏离太远时终止
+      terminate_when_dof_far: False  # 不因关节角度偏离而终止
+      terminate_when_close_to_dof_pos_limit: False  # 不因接近关节位置限制而终止
+      terminate_when_close_to_dof_vel_limit: False  # 不因接近关节速度限制而终止
+      terminate_when_close_to_torque_limit: False  # 不因接近扭矩限制而终止
+    
+    # 终止条件的尺度参数
+    termination_scales:
+      termination_min_base_height : 0.15  # 最小基座高度阈值
+      termination_gravity_x : 0.8  # X轴重力终止阈值
+      termination_gravity_y : 0.8  # Y轴重力终止阈值
+      termination_gravity : 0.75  # 总体重力终止阈值
+      termination_motion_far_threshold : 0.30  # 动作偏离距离阈值
+      termination_close_to_dof_pos_limit : 0.98  # 接近关节位置限制的比例
+      termination_close_to_dof_vel_limit : 0.98  # 接近关节速度限制的比例
+      termination_close_to_torque_limit : 0.98  # 接近扭矩限制的比例
+    
+    # 终止条件的概率设置
+    termination_probality:
+      terminate_when_close_to_dof_pos_limit: 0.25  # 接近关节位置限制时终止的概率
+      terminate_when_close_to_dof_vel_limit: 0.25  # 接近关节速度限制时终止的概率
+      terminate_when_close_to_torque_limit: 0.25  # 接近扭矩限制时终止的概率
+    
+    # 终止条件的课程学习设置
+    termination_curriculum:
+      terminate_when_motion_far_curriculum: True  # 启用动作偏离的课程学习
+      terminate_when_motion_far_initial_threshold: 0.3  # 动作偏离初始阈值
+      terminate_when_motion_far_threshold_max: 0.7  # 动作偏离最大阈值
+      terminate_when_motion_far_threshold_min: 0.3  # 动作偏离最小阈值
+      terminate_when_motion_far_curriculum_degree: 0.0001  # 课程学习的递增度
+      
+      # 动作偏离课程学习的完成率阈值
+      terminate_when_motion_far_completion_ratio_down_threshold: 0.93
+      terminate_when_motion_far_completion_ratio_up_threshold: 0.98
+
+      # 关节角度偏离的课程学习
+      terminate_when_dof_far_curriculum:
+        enable: True  # 启用关节偏离课程学习
+        init: 3.0  # 初始阈值
+        max: 3.0  # 最大阈值
+        min: 1.0  # 最小阈值
+        degree: 0.0001  # 递增度
+        
+        # 完成率阈值设置
+        completion_ratio_down_threshold: 0.93
+        completion_ratio_up_threshold: 0.98
+
+    resample_motion_when_training: False  # 训练时不重新采样动作
+    resample_time_interval_s: 2000  # 重新采样时间间隔（秒）
+
+    noise_to_initial_level: 0  # 初始噪声等级
+    
+    # 采样噪声配置
+    noise_for_sample:
+      enable: True  # 启用采样噪声
+      initial_noise_level: 0.  # 初始噪声水平
+      degree: 0.0001  # 噪声递增度
+      min_noise_level: 0.0  # 最小噪声水平
+      max_noise_level: 1.0  # 最大噪声水平
+      completion_ratio_down_threshold: 0.93  # 完成率下限阈值
+      completion_ratio_up_threshold: 0.98  # 完成率上限阈值
+
+    # 初始化噪声尺度
+    init_noise_scale: 
+      dof_pos: 0.1  # 关节位置噪声
+      dof_vel: 0.15  # 关节速度噪声
+      root_pos: 0.05  # 根部位置噪声
+      root_rot: 10  # 根部旋转噪声
+      root_vel: 0.01  # 根部线速度噪声
+      root_ang_vel: 0.01  # 根部角速度噪声
+
+    use_teleop_control: False  # 不使用遥操作控制
+    enforce_randomize_motion_start_eval: False  # 评估时不强制随机化动作起始
+
+    # 软动态修正配置
+    soft_dynamic_correction:
+      enable: False  # 不启用软动态修正
+      alpha: 0.1  # 修正系数
+      type: "deter"  # 修正类型：确定性
+      
+      # 软动态修正的课程学习
+      curriculum:
+        enable: True  # 启用课程学习
+        max_alpha: 0.9  # 最大修正系数
+        min_alpha: 0.0  # 最小修正系数
+        degree: 0.0001  # 递增度
+        
+        # 完成率阈值
+        completion_ratio_down_threshold: 0.93
+        completion_ratio_up_threshold: 0.98
+
+
+log_task_name: motion_tracking  # 日志任务名称
+
+# 评估时的覆盖配置
+eval_overrides:
+  env:
+    config: 
+      max_episode_length_s: 100000  # 评估时的最大回合长度 
