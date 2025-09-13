@@ -1,0 +1,5 @@
+Metadata-Version: 2.1
+Name: isaac_utils
+Version: 0.0.1
+Summary: Unified torch env_utils for IsaacGym and IsaacSim
+Author: 

@@ -1,0 +1,104 @@
+# @package _global_
+# Modified for pi robot (22 DOF)
+
+defaults:
+  - domain_rand_base
+
+domain_rand:
+  reinit_epis_rand: -1
+  
+  _push_fixed: true
+  push_robots : True
+  push_interval_s : [1, 3]
+  max_push_vel_xy : 0.5
+
+  randomize_base_com : True
+  base_com_range: #kg
+      x : [-0.05, 0.05]
+      y : [-0.05, 0.05]
+      z : [-0.01, 0.01]
+
+  randomize_link_mass : True
+  link_mass_range : [0.9, 1.1] 
+  randomize_link_com : False
+  link_com_range: #m 
+      x : [-0.01, 0.01]
+      y : [-0.01, 0.01]
+      z : [-0.01, 0.01]
+  randomize_link_body_names : [
+      'base_link',
+      'l_shoulder_pitch_link', 'l_shoulder_roll_link', 'l_upper_arm_link', 'l_elbow_link', 
+      'r_shoulder_pitch_link', 'r_shoulder_roll_link', 'r_upper_arm_link', 'r_elbow_link', 
+      'l_hip_pitch_link', 'l_hip_roll_link', 'l_thigh_link', 'l_calf_link', 'l_ankle_pitch_link', 'l_ankle_roll_link',
+      'r_hip_pitch_link', 'r_hip_roll_link', 'r_thigh_link', 'r_calf_link', 'r_ankle_pitch_link', 'r_ankle_roll_link'
+  ]
+
+  randomize_link_inertia : True
+  link_inertia_range : [0.9,1.1] 
+  randomize_link_inertia_names : [
+      'base_link',
+      'l_shoulder_pitch_link', 'l_shoulder_roll_link', 'l_upper_arm_link', 'l_elbow_link',
+      'r_shoulder_pitch_link', 'r_shoulder_roll_link', 'r_upper_arm_link', 'r_elbow_link', 
+      'l_hip_pitch_link', 'l_hip_roll_link', 'l_thigh_link', 'l_calf_link', 'l_ankle_pitch_link', 'l_ankle_roll_link',
+      'r_hip_pitch_link', 'r_hip_roll_link', 'r_thigh_link', 'r_calf_link', 'r_ankle_pitch_link', 'r_ankle_roll_link'
+  ]
+
+  heavy_upper: 
+    enable: False
+    ratio: 1.1 
+    body_names: [
+        'base_link',
+        'l_shoulder_pitch_link', 'l_shoulder_roll_link', 'l_upper_arm_link', 'l_elbow_link', 
+        'r_shoulder_pitch_link', 'r_shoulder_roll_link', 'r_upper_arm_link', 'r_elbow_link', 
+    ]
+  randomize_pd_gain : True
+  kp_range : [0.85, 1.15]
+  kd_range : [0.85, 1.15]
+
+  parallel_serial_pd:
+    
+    enable: False
+    ratio: [0.8, 1.2] 
+    joint_idx: [4,5, 10,11, 16,17]  
+
+  randomize_friction : True
+  friction_range : [0.2, 1.2]
+  randomize_restitution : False
+  restitution_range : [0.0, 1.0]
+
+  randomize_base_mass : False 
+  added_mass_range : [-3., 3.]  
+  
+  randomize_torque_rfi : True
+  use_rao : True
+  rao_lim : 0.05
+  rfi_lim : 0.05
+  randomize_rfi_lim : True
+  rfi_lim_range : [0.5, 1.5]
+
+  randomize_ctrl_delay : True
+  ctrl_delay_step_range : [0, 2] 
+
+  randomize_motion_ref_xyz: False 
+  motion_ref_xyz_range : [[-0.015, 0.015],[-0.015, 0.015],[-0.08, 0.08]]  
+
+  motion_package_loss: False
+  package_loss_range: [1, 10] 
+  package_loss_interval_s : 2
+
+  born_offset : False
+  born_offset_curriculum: False
+  born_offset_level_down_threshold: 50
+  born_offset_level_up_threshold: 120
+  level_degree: 0.00005
+  born_distance : 0.2  
+  born_offset_range: [0.0, 1]
+  born_offset_possibility : 1.0
+
+  born_heading_curriculum: False
+  born_heading_randomization : False
+  born_heading_level_down_threshold: 50
+  born_heading_level_up_threshold: 120
+  born_heading_degree: 10
+  born_heading_range: [0, 180]
+  born_heading_level_degree: 0.00005
