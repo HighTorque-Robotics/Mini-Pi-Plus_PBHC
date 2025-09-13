@@ -1,8 +1,6 @@
 
+## Pi_Plus_PBHC
 ![视频封面描述](https://github.com/HighTorque-Robotics/Pi-Plus_PBHC/raw/main/Video/ab60337d9e5ab015f1fa9f51d9106051.gif)
-
-
-## Pi_Mimic项目使用方法介绍
 下载项目：
 ```
 git clone https://github.com/HighTorque-Robotics/Pi-Plus_PBHC
