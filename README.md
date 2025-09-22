@@ -111,7 +111,7 @@ python motion_source/count_pkl_contact_mask.py +input_folder=retargeted_motion_d
 python robot_motion_process/motion_clip_interpolation.py --origin_file_name retargeted_motion_data/mink/pi_plus_lafan_contact_mask/{your_pkl_cont_mask_fixed_file}.pkl --start {start num} --end {end num} --end_inter_frame 25
 ```
 **注：推荐使用lafan数据集，如果使用的是AMASS数据集遇到问题，也可以通过该脚本1:1进行一次截取（格式化）。**
-跌倒爬起fallAndGetUp2_subject2使用数据区间为: --start 830 --end 1051
+跌倒爬起fallAndGetUp2_subject2使用数据区间为: --start 1183 --end 1372
 
 #### 可视化重定向数据
 查看截取前的数据
