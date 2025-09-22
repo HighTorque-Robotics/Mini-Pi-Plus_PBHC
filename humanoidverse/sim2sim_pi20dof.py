@@ -344,7 +344,15 @@ def run_sim2sim_pi_simplified(onnx_model_path, xml_path=None, motion_file_path=N
     print(f"Motion length: {config.motion_len} seconds")
     
     # Base position: pos: [0.0, 0.0, 0.35]
-    data.qpos[2] = 0.37  # Base height
+    data.qpos[0] = 0  # x
+    data.qpos[1] =0  # y  
+    data.qpos[2] =0.19 # z
+    
+  
+    data.qpos[3] = 1  # w
+    data.qpos[4] = 0  # x
+    data.qpos[5] = -1 # y  
+    data.qpos[6] = 0  # z
    
     # Set initial joint positions for stable standing pose
     if len(data.qpos) > 7:
