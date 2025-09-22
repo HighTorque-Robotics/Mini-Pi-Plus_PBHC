@@ -189,11 +189,10 @@ python onnx2rknn.py
 ```
 
 ### 本项目提供预训练模型
-pt文件：example/pretrained_pose/model_13000.pt\
-onnx文件：example/pretrained_pose/model_13000.onnx\
-rknn文件：example/pretrained_pose/model_13000_Pi_fuwoup_fut_nowaist_0826.rknn\
-俯卧未来帧数据：example/pretrained_pose/rel_fut_fuwo_0826.json\
-仰卧未来帧数据：example/pretrained_pose/rel_fut_ref_motion_state_flat_data.json
+pt文件：example/pretrained_pose/model_12000.pt
+onnx文件：example/pretrained_pose/model_12000.onnx
+rknn文件：example/pretrained_pose/model_12000.rknn
+仰卧未来帧数据：example/pretrained_pose/rel_fut_yangwo_0911.json
 
 
 #### policy文件传输
