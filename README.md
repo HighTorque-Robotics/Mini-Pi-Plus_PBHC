@@ -190,7 +190,7 @@ python onnx2rknn.py
 
 ### 本项目提供预训练模型
 pt文件：example/pretrained_pose/model_12000.pt
-onnx文件：example/pretrained_pose/model_12000.onnx
+onnx文件：example/pretrained_pose/exported/model_12000.onnx
 rknn文件：example/pretrained_pose/model_12000.rknn
 仰卧未来帧数据：example/pretrained_pose/rel_fut_yangwo_0911.json
 
