@@ -21,6 +21,7 @@ SMPLSim安装，原项目地址:
 https://github.com/ZhengyiLuo/SMPLSim
 
 ```
+git clone https://github.com/ZhengyiLuo/smplx.git
 pip install -e SMPLSim
 ```
 
