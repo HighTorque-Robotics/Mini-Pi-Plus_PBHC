@@ -29,6 +29,7 @@ pip install -e SMPLSim
 使用GMR项目进行数据集的重定向，原项目地址: https://github.com/YanjieZe/GMR
 ```
 # create conda env 为避免环境冲突等问题，重定向在一个独立的虚拟环境中进行
+conda deactivate
 conda create -n gmr python=3.10 -y
 conda activate gmr
 
@@ -36,8 +37,6 @@ pip install -e GMR
 conda install -c conda-forge libstdcxx-ng -y
 ```
 **注：如果没有使用本项目提供的GMR而是是下载的原链接内容，注意安装前修改setup.py 中 numpy==1.24.4。**
-
-下载pi_plus机器人配置文件: https://github.com/HighTorque-Locomotion/GMR_json
 
 **注：为了便于您使用高擎机电的机器人，本项目中已包含以下修改。若另需添加自己的机器人文件也可参考以下内容添加。**
 
@@ -87,6 +86,7 @@ VIEWER_CAM_DISTANCE_DICT = {
 
 ```
 # 单个动作重定向 为避免环境冲突等问题，重定向在gmr虚拟环境中进行
+注：推荐使用lafan数据集，跌倒爬起使用的是fallAndGetUp2_subject2；如果使用的是AMASS数据集遇到问题，也可以通过该脚本1:1进行一次截取（格式化）。
 conda activate gmr
 
 python GMR/scripts/bvh_to_robot.py --bvh_file GMR/MotionData/lafan1/{your_bvh_file}.bvh --robot pi_football --save_path GMR/RetargetData/lafan1/pi_football/{your_bvh_file}.pkl --rate_limit
@@ -111,8 +111,7 @@ python motion_source/count_pkl_contact_mask.py +input_folder=retargeted_motion_d
 ``` 
 python robot_motion_process/motion_clip_interpolation.py --origin_file_name retargeted_motion_data/mink/pi_plus_lafan_contact_mask/{your_pkl_cont_mask_fixed_file}.pkl --start {start num} --end {end num} --end_inter_frame 25
 ```
-**注：推荐使用lafan数据集，如果使用的是AMASS数据集遇到问题，也可以通过该脚本1:1进行一次截取（格式化）。**
-跌倒爬起fallAndGetUp2_subject2使用数据区间为: --start 1183 --end 1372
+**  跌倒爬起fallAndGetUp2_subject2使用数据区间为: --start 1183 --end 1372 **
 
 #### 可视化重定向数据
 查看截取前的数据
@@ -131,19 +130,8 @@ python robot_motion_process/vis_q_mj_pi+_20dof.py +motion_file=retargeted_motion
 
 根据训练动作不同需要修改配置文件中的参数，比如terminate_by_gravity，penalize_contacts_on等。\
 推荐使用Nvidia RTX 4090或其他显存不小于16G的Nvidia显卡进行训练
-``` 
-python humanoidverse/train_agent.py \
-+simulator=isaacgym +exp=motion_tracking_pi +terrain=terrain_locomotion_plane \
-project_name=pi_dance num_envs=8192 \
-+obs=motion_tracking/main_pi20dof  \
-+robot=pi+_20dof/pi+_20dof \
-+domain_rand=main_pi20dof \
-+rewards=motion_tracking/main_pi20dof \
-experiment_name=debug \
-robot.motion.motion_file='retargeted_motion_data/mink/pi_lafan_contact_mask/{your_pkl_cont_mask_fixed_inter_file}.pkl' \
-seed=1 \
-+device=cuda:0 +env=motion_tracking_pi20dof
-
+```
+ python humanoidverse/train_agent.py +simulator=isaacgym +exp=motion_tracking_pi +terrain=terrain_locomotion_plane project_name=pi_dance num_envs=8192 +obs=motion_tracking/main_pi20dof  +robot=pi+_20dof/pi+_20dof +domain_rand=main_pi20dof +rewards=motion_tracking/main_pi20dof experiment_name=debug robot.motion.motion_file='retargeted_motion_data/mink/pi_lafan_contact_mask/{your_pkl_cont_mask_fixed_inter_file}.pkl' seed=1 +device=cuda:0 +env=motion_tracking_pi20dof
 ```
 
 ## 5. 测试模型
