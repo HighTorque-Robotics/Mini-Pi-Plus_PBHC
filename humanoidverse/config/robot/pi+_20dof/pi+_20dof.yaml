@@ -80,7 +80,7 @@ robot:
                 ]
 
   terminate_after_contacts_on : []
-  penalize_contacts_on: ["shoulder", "hip", "elbow", "arm",'calf']
+  penalize_contacts_on: []
   
   init_state:
     pos: [0.0, 0.0, 0.35] # x,y,z [m]
