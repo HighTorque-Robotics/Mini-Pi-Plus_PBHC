@@ -128,7 +128,7 @@ python robot_motion_process/vis_q_mj_pi+_20dof.py +motion_file=retargeted_motion
 
 ## 4. 训练模型
 
-根据训练动作不同需要修改配置文件中的参数，比如terminate_by_gravity，penalize_contacts_on等。\
+根据训练动作不同需要修改配置文件中的参数，例如如跌到爬起的训练参数已把因重力倾倒终止关闭，Mini-Pi-Plus_PBHC/humanoidverse/config/env路径下的motion_tracking_pi20dof.yaml文件中terminate_by_gravity设置为False，Mini-Pi-Plus_PBHC/humanoidverse/config/robot/pi+_20dof路径下的pi+_20dof.yaml文件中惩罚关节项置空penalize_contacts_on[]。\
 推荐使用Nvidia RTX 4090或其他显存不小于16G的Nvidia显卡进行训练
 ```
  python humanoidverse/train_agent.py +simulator=isaacgym +exp=motion_tracking_pi +terrain=terrain_locomotion_plane project_name=pi_dance num_envs=8192 +obs=motion_tracking/main_pi20dof  +robot=pi+_20dof/pi+_20dof +domain_rand=main_pi20dof +rewards=motion_tracking/main_pi20dof experiment_name=debug robot.motion.motion_file='retargeted_motion_data/mink/pi_lafan_contact_mask/{your_pkl_cont_mask_fixed_inter_file}.pkl' seed=1 +device=cuda:0 +env=motion_tracking_pi20dof
