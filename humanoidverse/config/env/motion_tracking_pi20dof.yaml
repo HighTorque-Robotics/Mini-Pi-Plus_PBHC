@@ -13,7 +13,7 @@ env:
     # 终止条件配置
     termination:
       terminate_by_contact: False  # 不因接触而终止
-      terminate_by_gravity: True  # 因重力（倾倒）而终止
+      terminate_by_gravity: False  # 因重力（倾倒）而终止
       terminate_by_low_height: False  # 不因高度过低而终止
       terminate_when_motion_end: True  # 动作结束时终止
       terminate_when_motion_far: True  # 动作偏离太远时终止
