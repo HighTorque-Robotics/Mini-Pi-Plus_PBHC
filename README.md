@@ -149,7 +149,7 @@ python humanoidverse/eval_agent_save_json.py +device=cuda:0 +env.config.enforce_
 
 #### sim2sim使用未来帧的模型的模型
 ```
-python humanoidverse/sim2sim_pi20dof.py --checkpoint {your_train_log_path}/exported/{your_model_xxx}.onnx --xml_path description/robots/pi+_all/pi_plus_20dof_250828/xml/pi_20dof_0828.xml --json_file {your_train_log_path}rel_fut_ref_motion_state_flat_data.json
+python humanoidverse/sim2sim_pi20dof.py --checkpoint {your_train_log_path}/exported/{your_model_xxx}.onnx --xml_path description/robots/pi+_all/pi_plus_20dof_250828/xml/pi_20dof_0828.xml --json_file {your_train_log_path}/rel_fut_ref_motion_state_flat_data.json
 ```
 
 ## 7. sim2real
